@@ -63,3 +63,21 @@ export function postUser(nameP,emailP,passwordP){
         })
     })
 }
+
+export function postCompany(nameP,fieldP,emailP,passwordP){
+    fetch(URL_DB + "/companies",{
+        "method":"POST",
+        "headers":{
+            "Content-Type":"application/json"
+        },
+        "body":JSON.stringify({
+            name:nameP,
+            logo:"",
+            field:fieldP,
+            description:"",
+            email:emailP,
+            password:passwordP
+        })
+    })
+
+}
