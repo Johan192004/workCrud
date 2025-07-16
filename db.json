@@ -1,0 +1,29 @@
+{
+    "users":[
+        {
+            "id":"1",
+            "name":"Johan Ramirez",
+            "email":"johan@gmail.com",
+            "password":"pass",
+            "cv":"hola.com",
+            "skills":["player","team worker"],
+            "jobExperience":[
+                {
+                    "companyName":"Riwi",
+                    "functions":"I am a web development student"
+                }
+            ]
+        }
+    ],
+    "companies":[
+        {
+            "id":"1",
+            "name":"Riwi",
+            "logo":"soyunaurl.com",
+            "field":"Web development",
+            "description": "We are a company that trains coders",
+            "email":"riwi@gmail.com",
+            "password":"pass"
+        }
+    ]
+}
