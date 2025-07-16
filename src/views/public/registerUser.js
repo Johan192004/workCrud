@@ -1,4 +1,5 @@
-import { getUsersQuerry } from "../../Router.js"
+import { getUsersQuerry, postUser, getCompaniesQuerry} from "../../Router.js"
+
 export function viewRegisterUser() {
     const appContainer = document.getElementById("app")
     appContainer.innerHTML = `<div class="row mt-5">
@@ -15,12 +16,17 @@ export function viewRegisterUser() {
                         <input type="password" name="password" id="password" class="form-control" required>
                         <label for="password2" class="mt-2">Confirm password</label>
                         <input type="password" name="password2" id="password2" class="form-control" required>
-                        <button type="submit" class="btn btn-primary w-100 mt-5">Register</button>
+                        <button type="submit" class="btn btn-primary w-100 mt-4">Register</button>
                     </form>
+                    <div class="d-flex justify-content-center mt-3">
+                        <a class="btn" id="loginA">Already have an account? Login</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>`
+
+    scriptRegisterUser()
 }
 
 
@@ -41,11 +47,21 @@ function scriptRegisterUser() {
         const passwordRepeatValue = passwordRepeatField.value
 
         let userChosen = await getUsersQuerry(`email=${emailValue}`)
-        let companyChosen = await getUsersQuerry(`email=${emailValue}`)
+        let companyChosen = await getCompaniesQuerry(`email=${emailValue}`)
          
 
         if (userChosen.length == 0 && companyChosen.length == 0) {
 
+            if(passwordValue == passwordRepeatValue){
+
+                postUser(nameValue,emailValue,passwordValue)
+                window.location.hash = "#/login"
+
+            } else {
+
+                alert("Las contraseñas no coinciden")
+
+            }
 
 
         } else {
@@ -56,5 +72,14 @@ function scriptRegisterUser() {
 
     })
 
-}
 
+    const aLogin = document.getElementById("loginA")
+    aLogin.addEventListener("click",(e)=>{
+
+        e.preventDefault()
+
+        window.location.hash = "#/login"
+
+    })
+
+}

@@ -1,13 +1,6 @@
 import { routes } from "./src/Router.js"
 const appContainer = document.getElementById("app")
 
-document.addEventListener("DOMContentLoaded",()=>{
-
-
-
-
-})
-
 
 function verifyHash(){
     let currentHash = window.location.hash
