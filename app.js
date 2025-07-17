@@ -12,8 +12,8 @@ function verifyHash(){
 
 
 window.addEventListener("hashchange",()=>{
-    let currentHash = window.location.hash
-    routes[currentHash]()
+    let path = window.location.hash;
+    routes[path]();
 })
 
 document.addEventListener("DOMContentLoaded",()=>{
@@ -23,7 +23,5 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 window.addEventListener("popstate",()=>{
     let path = window.location.hash;
-    console.log(path)
     routes[path]();
-    console.log("hola")
 })

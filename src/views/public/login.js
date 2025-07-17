@@ -73,6 +73,9 @@ function verifyLogin(){
 
                     console.log("iniciar sesion company")
 
+                    window.sessionStorage.setItem("role","company")
+                    window.location.hash = "#/dashboard"
+
                 }else {
                     console.log("contraseña incorrecta company")
                 }

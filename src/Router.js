@@ -3,12 +3,16 @@ import { viewWelcome } from "./views/public/welcome.js"
 import { URL_DB } from "./config.js"
 import { viewRegisterCompany } from "./views/public/registerCompany.js"
 import { viewRegisterUser } from "./views/public/registerUser.js"
+import { viewDashboard } from "./views/private/dashboard.js"
+import { viewJobs } from "./views/private/company/jobs.js"
 
 export const routes = {
     "":viewWelcome,
     "#/login": viewLogin ,
     "#/registerCompany":viewRegisterCompany,
-    "#/registerUser":viewRegisterUser
+    "#/registerUser":viewRegisterUser,
+    "#/dashboard":viewDashboard,
+    "#/dashboard/jobs": viewJobs
 }
 
 export async function getUsers() {
@@ -80,4 +84,17 @@ export function postCompany(nameP,fieldP,emailP,passwordP){
         })
     })
 
+}
+
+
+export async function getJobs(){
+    let res = await fetch(URL_DB + "/jobs")
+    let resJson = await res.json()
+    return resJson
+}
+
+
+
+export function preChargeDashboard(){
+    viewDashboard()
 }

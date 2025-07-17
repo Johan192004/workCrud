@@ -18,7 +18,7 @@ export function viewWelcome(){
 
     const loginButton = document.getElementById("login")
     loginButton.addEventListener("click",(e)=>{
-        history.pushState({},"",history.pushState({},"",window.location.hash))
+        // history.pushState({},"",history.pushState({},"",window.location.hash))
         window.location.hash = "#/login"
     })
     
