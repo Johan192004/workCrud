@@ -5,14 +5,38 @@ import { viewRegisterCompany } from "./views/public/registerCompany.js"
 import { viewRegisterUser } from "./views/public/registerUser.js"
 import { viewDashboard } from "./views/private/dashboard.js"
 import { viewJobs } from "./views/private/company/jobs.js"
+import { viewNotFound } from "./views/public/not-found.js"
 
-export const routes = {
-    "":viewWelcome,
-    "#/login": viewLogin ,
-    "#/registerCompany":viewRegisterCompany,
-    "#/registerUser":viewRegisterUser,
-    "#/dashboard":viewDashboard,
-    "#/dashboard/jobs": viewJobs
+// export const routes = {
+//     "":viewWelcome,
+//     "#/login": viewLogin ,
+//     "#/registerCompany":viewRegisterCompany,
+//     "#/registerUser":viewRegisterUser,
+//     "#/dashboard":viewDashboard,
+//     "#/dashboard/jobs": viewJobs
+// }
+
+export function routesFunction(url){
+    switch (url){
+        case "":
+            return viewWelcome;
+        case "#/login":
+            return viewLogin;
+        case "#/registerCompany":
+            return viewRegisterCompany;
+        case "#/registerUser":
+            return viewRegisterUser;
+        case "#/dashboard":
+            return viewDashboard;
+        case "#/dashboard/jobs":
+            return viewJobs;
+        case "#/notFound":
+            return viewNotFound
+        default:
+            return notFound
+    }
+
+
 }
 
 export async function getUsers() {
@@ -93,8 +117,8 @@ export async function getJobs(){
     return resJson
 }
 
+function notFound(){
 
+    window.location.hash = "#/notFound"
 
-export function preChargeDashboard(){
-    viewDashboard()
 }

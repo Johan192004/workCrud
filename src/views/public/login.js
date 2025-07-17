@@ -56,6 +56,7 @@ function verifyLogin(){
             if(passwordValue == userChosen.password){
 
                 console.log("iniciar sesion user")
+                window.sessionStorage.setItem("role","user")
 
             }
 

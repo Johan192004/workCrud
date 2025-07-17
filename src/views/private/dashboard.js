@@ -30,9 +30,14 @@ export function viewDashboard(){
                 <div id="dashboardField" class="col-md-9 min-vh-100 bg-dark d-flex justify-content-center align-content-start p-5 flex-wrap gap-5">
 
             </div>`
+
+            scriptDashboardCompany()
+    } else if(window.sessionStorage.getItem("role") == "user"){
+        console.log("Nada")
+        //Aqui poner en codigo html para la vista de usuario
     }
 
-    scriptDashboardCompany()
+    
 
 }
 
@@ -50,7 +55,10 @@ async function scriptDashboardCompany(){
 
         let path = jobsA.getAttribute("href")
         let currentHash = window.location.hash
-        if(currentHash != "/jobs"){
+        let lastHashSlash = currentHash.split("/")
+        lastHashSlash = lastHashSlash[lastHashSlash.length - 1]
+        console.log(lastHashSlash)
+        if(lastHashSlash != "jobs"){
             path = currentHash + path
             window.location.hash = path
         }

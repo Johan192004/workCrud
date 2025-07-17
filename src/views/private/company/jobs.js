@@ -1,27 +1,27 @@
-import { getJobs, preChargeDashboard } from "../../../Router.js"
+import { getJobs } from "../../../Router.js"
+import { viewDashboard } from "../dashboard.js"
 
-export async function viewJobs(){
+export function viewJobs(){
     if(document.getElementById("dashboardField")){
-        viewJobsComplete()
-        console.log("Ya habia cargado")
+        if(window.sessionStorage.getItem("location") == "jobs"){
+            console.log("Ya habia cargado antes")
+        } else {
+            viewJobsComplete()
+            console.log("Ya habia cargado")
+        }
+        
     } else {
-        preChargeDashboard()
+        viewDashboard()
         viewJobsComplete()
         console.log("No habia cargado")
 
     }
 }
 
-function scriptJobs(){
-
-
-
-}
 
 async function viewJobsComplete(){
-    let appContainer;
-
-    appContainer = document.getElementById("dashboardField")
+    console.log("Entre al view jobs")
+    let appContainer = document.getElementById("dashboardField")
     appContainer.innerHTML = ""
 
     const jobs = await getJobs()
@@ -39,4 +39,6 @@ async function viewJobsComplete(){
                         </div>
                     </div>
                 </div>`})
+
+    window.sessionStorage.setItem("location","jobs")
 }

@@ -1,5 +1,5 @@
-import { routes } from "./src/Router.js"
-const appContainer = document.getElementById("app")
+import { routesFunction } from "./src/Router.js"
+// const appContainer = document.getElementById("app")
 
 
 function verifyHash(){
@@ -13,15 +13,16 @@ function verifyHash(){
 
 window.addEventListener("hashchange",()=>{
     let path = window.location.hash;
-    routes[path]();
+    routesFunction(path)();
 })
 
 document.addEventListener("DOMContentLoaded",()=>{
     let path = window.location.hash;
-    routes[path]();
+    console.log(path)
+    routesFunction(path)();
 })
 
 window.addEventListener("popstate",()=>{
     let path = window.location.hash;
-    routes[path]();
+    routesFunction(path)();
 })
