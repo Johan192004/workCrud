@@ -1,10 +1,11 @@
-import { getUsersQuerry, getCompaniesQuerry } from "../../Router.js"
+import { getUsersQuerry, getCompaniesQuerry, authLogin } from "../../Router.js"
 
 export function viewLogin(){
 
-    const appContainer = document.getElementById("app")
-    appContainer.innerHTML = `
-        <div class="row mt-5">
+    if(!authLogin()){
+        const appContainer = document.getElementById("app")
+        appContainer.innerHTML = `
+            <div class="row mt-5">
             <div class="col-md-4 offset-md-4">
                 <div class="card">
                     <h1 class="card-title text-center">Login</h1>
@@ -26,14 +27,17 @@ export function viewLogin(){
         </div>`
 
 
-    scriptLogin()
+        scriptLogin()
+    }
+    
 
 }
 
 
 function verifyLogin(){
-
     // const user = await getUsersQuerry(``)
+
+    
 
     const emailField = document.getElementById("email")
     const passwordField = document.getElementById("password")
@@ -57,6 +61,8 @@ function verifyLogin(){
 
                 console.log("iniciar sesion user")
                 window.sessionStorage.setItem("role","user")
+                window.sessionStorage.setItem("auth","true")
+
 
             }
 
@@ -74,6 +80,7 @@ function verifyLogin(){
 
                     console.log("iniciar sesion company")
 
+                    window.sessionStorage.setItem("auth","true")
                     window.sessionStorage.setItem("role","company")
                     window.location.hash = "#/dashboard"
 

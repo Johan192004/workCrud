@@ -122,3 +122,40 @@ function notFound(){
     window.location.hash = "#/notFound"
 
 }
+
+export function auth(){
+
+    if((window.sessionStorage.getItem("auth") == "true")){
+
+        return true
+    } else {
+        window.location.hash = ""
+        return false
+    }
+
+}
+
+export function authLogin(){
+
+    if(window.sessionStorage.getItem("auth") == "true"){
+
+        window.location.hash = "#/dashboard"
+        return true
+
+    } else {
+        return false
+    }
+
+}
+
+export function deleteJob(id){
+
+    fetch(`${URL_DB}/jobs/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      
+
+}

@@ -54,74 +54,11 @@
       "mode": "Remoto"
     },
     {
-      "id": "3",
-      "title": "Analista de datos",
-      "description": "Especialista en análisis de datos con Python y SQL",
-      "salary": "5000000",
-      "mode": "Híbrido"
-    },
-    {
-      "id": "4",
-      "title": "Product Manager",
-      "description": "Líder de productos con experiencia en Agile",
-      "salary": "7000000",
-      "mode": "Presencial"
-    },
-    {
-      "id": "5",
-      "title": "Desarrollador móvil",
-      "description": "Desarrollador de aplicaciones Android y iOS",
-      "salary": "4500000",
-      "mode": "Remoto"
-    },
-    {
-      "id": "6",
-      "title": "Backend Developer",
-      "description": "Desarrollador backend con experiencia en Node.js y MongoDB",
-      "salary": "4000000",
-      "mode": "Híbrido"
-    },
-    {
-      "id": "7",
-      "title": "Ingeniero de calidad",
-      "description": "Experto en pruebas automatizadas y control de calidad",
-      "salary": "3800000",
-      "mode": "Presencial"
-    },
-    {
-      "id": "8",
-      "title": "Community Manager",
-      "description": "Encargado de gestionar redes sociales y comunidad online",
-      "salary": "3000000",
-      "mode": "Remoto"
-    },
-    {
-      "id": "9",
-      "title": "Desarrollador Full Stack",
-      "description": "Desarrollador con experiencia en front-end y back-end",
-      "salary": "5500000",
-      "mode": "Presencial"
-    },
-    {
       "id": "10",
       "title": "Diseñador gráfico",
       "description": "Diseñador con experiencia en Adobe Photoshop y Illustrator",
       "salary": "3200000",
       "mode": "Híbrido"
-    },
-    {
-      "id": "11",
-      "title": "Administrador de sistemas",
-      "description": "Administrador de servidores y redes con experiencia en Linux",
-      "salary": "4800000",
-      "mode": "Presencial"
-    },
-    {
-      "id": "12",
-      "title": "Desarrollador Python",
-      "description": "Desarrollador con experiencia en Django y Flask",
-      "salary": "4200000",
-      "mode": "Remoto"
     },
     {
       "id": "13",
