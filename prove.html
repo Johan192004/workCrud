@@ -15,7 +15,30 @@
 <body>
 
     <div class="container-fluid">
-        
+        <div class="col-md-4 offset-md-4 mt-5">
+            <div class="card">
+                <h1 class="card-title text-center border-bottom p-2">Edit job</h1>
+                <div class="card-body">
+                    <form action="">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" class="form-control">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" class="form-control"></textarea>
+                        <label for="requirements">Requirements</label>
+                        <textarea name="requirements" id="requirements" class="form-control"></textarea>
+                        <label for="salary">Salary</label>
+                        <input type="number" name="salary" id="salary" class="form-control">
+                        <label for="modality">Modality</label>
+                        <select name="modality" id="modality" class="form-control">
+                            <option value="in-person">in-person</option>
+                            <option value="virtual">virtual</option>
+                            <option value="hybrid">hybrid</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary w-100 mt-4">Submit changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"

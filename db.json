@@ -41,45 +41,123 @@
   "jobs": [
     {
       "id": "1",
-      "title": "Desarrollador web",
-      "description": "Desarrollador con habilidades en JavaScript",
-      "salary": "4000000",
-      "mode": "Presencial"
+      "title": "Web ",
+      "description": " with skills in JavaScript, HTML, and CSS",
+      "salary": "40",
+      "requirements": "Minimum of ",
+      "mode": "in-person"
     },
     {
       "id": "2",
-      "title": "Diseñador UI/UX",
-      "description": "Diseñador con experiencia en Figma y Sketch",
+      "title": "Graphic Designer",
+      "description": "Designer specialized in user interface design and visual content creation",
       "salary": "3500000",
-      "mode": "Remoto"
+      "requirements": "Proficiency in Adobe Creative Suite",
+      "mode": "virtual"
+    },
+    {
+      "id": "3",
+      "title": "Data Scientist",
+      "description": "Expert in data analysis with knowledge in Python and SQL",
+      "salary": "6500000",
+      "requirements": "Experience with Machine Learning and big data processing",
+      "mode": "hybrid"
+    },
+    {
+      "id": "4",
+      "title": "Network Administrator",
+      "description": "Responsible for managing company networks and servers",
+      "salary": "4500000",
+      "requirements": "CCNA certification and at least 3 years of experience",
+      "mode": "in-person"
+    },
+    {
+      "id": "5",
+      "title": "Digital Marketing Specialist",
+      "description": "Specialist in creating online marketing strategies",
+      "salary": "3500000",
+      "requirements": "Knowledge in SEO, SEM, and Google Analytics",
+      "mode": "virtual"
+    },
+    {
+      "id": "6",
+      "title": "Software Engineer",
+      "description": "Software developer with knowledge of Java and C++",
+      "salary": "7000000",
+      "requirements": "Experience in developing large-scale applications",
+      "mode": "hybrid"
+    },
+    {
+      "id": "7",
+      "title": "Community Manager",
+      "description": "Responsible for managing social media and online communication for a brand",
+      "salary": "3000000",
+      "requirements": "Experience with social media management and content creation",
+      "mode": "virtual"
+    },
+    {
+      "id": "8",
+      "title": "Backend Developer",
+      "description": "Developer with experience in backend programming, preferably with Node.js or Ruby",
+      "salary": "5000000",
+      "requirements": "Experience with relational and non-relational databases",
+      "mode": "in-person"
+    },
+    {
+      "id": "9",
+      "title": "Technical Support Specialist",
+      "description": "Responsible for providing user support and solving technical issues",
+      "salary": "2800000",
+      "requirements": "Knowledge of hardware and software, with problem-solving skills",
+      "mode": "in-person"
     },
     {
       "id": "10",
-      "title": "Diseñador gráfico",
-      "description": "Diseñador con experiencia en Adobe Photoshop y Illustrator",
+      "title": "Content Writer",
+      "description": "Writer with experience in creating web content and SEO",
       "salary": "3200000",
-      "mode": "Híbrido"
+      "requirements": "Knowledge of SEO writing techniques",
+      "mode": "virtual"
+    },
+    {
+      "id": "11",
+      "title": "Quality Analyst",
+      "description": "Responsible for validating and testing software products",
+      "salary": "4500000",
+      "requirements": "Familiarity with testing tools like Selenium or JIRA",
+      "mode": "hybrid"
+    },
+    {
+      "id": "12",
+      "title": "Tech Sales Representative",
+      "description": "Salesperson for technology products and enterprise solutions",
+      "salary": "4000000",
+      "requirements": "Negotiation skills and technical knowledge of products",
+      "mode": "in-person"
     },
     {
       "id": "13",
-      "title": "Marketing Digital",
-      "description": "Especialista en SEO, SEM y Google Analytics",
-      "salary": "3600000",
-      "mode": "Remoto"
+      "title": "Digital Transformation Consultant",
+      "description": "Consultant for business digitalization and automation processes",
+      "salary": "8000000",
+      "requirements": "Experience in digital transformation projects",
+      "mode": "hybrid"
     },
     {
       "id": "14",
-      "title": "Consultor de TI",
-      "description": "Consultor con experiencia en infraestructura y soporte",
-      "salary": "6000000",
-      "mode": "Híbrido"
+      "title": "Cybersecurity Specialist",
+      "description": "Expert in protecting systems and networks from cyberattacks",
+      "salary": "7500000",
+      "requirements": "Certifications in Cybersecurity like CISSP or CEH",
+      "mode": "virtual"
     },
     {
       "id": "15",
-      "title": "Redactor de contenido",
-      "description": "Redactor con experiencia en marketing de contenidos",
-      "salary": "2800000",
-      "mode": "Remoto"
+      "title": "IT Project Manager",
+      "description": "Managing development teams and technological projects within an organization",
+      "salary": "9000000",
+      "requirements": "Experience in project management with agile methodologies like Scrum",
+      "mode": "in-person"
     }
   ]
 }

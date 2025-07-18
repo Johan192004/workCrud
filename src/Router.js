@@ -117,6 +117,12 @@ export async function getJobs(){
     return resJson
 }
 
+export async function getJobId(id){
+    let res = await fetch(URL_DB + "/jobs" + `/${id}`)
+    let resJson = await res.json()
+    return resJson
+}
+
 function notFound(){
 
     window.location.hash = "#/notFound"
@@ -157,5 +163,24 @@ export function deleteJob(id){
         }
       });
       
+
+}
+
+export async function patchJob(idP,titleP,descriptionP,salaryP,requirementsP,modeP){
+
+    let res = await fetch(URL_DB + "/jobs/" + `${idP}`,{
+        "method":"PATCH",
+        "headers":{
+            "Content-Type":"application/json"
+        },
+        "body":JSON.stringify({
+            title:titleP,
+            description:descriptionP,
+            salary:salaryP,
+            requirements:requirementsP,
+            mode:modeP
+        })
+
+    })
 
 }
