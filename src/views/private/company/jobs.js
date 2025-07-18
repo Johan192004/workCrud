@@ -1,4 +1,4 @@
-import { getJobs, auth, deleteJob, getJobId, patchJob } from "../../../Router.js"
+import { getJobs, auth, deleteJob, getJobId, patchJob, getJobsQuerry, postUser, postJob } from "../../../Router.js"
 import { viewDashboard } from "../dashboard.js"
 
 export function viewJobs(){
@@ -28,9 +28,19 @@ async function viewJobsComplete(){
     console.log("Entre al view jobs")
     let appContainer = document.getElementById("dashboardField")
     
+    const companyId = window.sessionStorage.getItem("companyId")
 
-    const jobs = await getJobs()
-    appContainer.innerHTML = "" 
+    const jobs = await getJobsQuerry(`companyId=${companyId}`)
+
+
+    appContainer.innerHTML=`<div class="d-flex justify-content-end w-100">
+            <button id="addJobButton" class="btn btn-primary">Add job</button>
+        </div>`
+
+    const addJobButton = document.getElementById("addJobButton")
+    addJobButton.addEventListener("click",()=>{
+        addJobDiv()
+    })
 
     
 
@@ -101,17 +111,31 @@ function createEditButton(currentId,container){
 
 
 async function editJobDiv(aimId){
-    let aimUser = await getJobId(aimId)
+    let aimJob = await getJobId(aimId)
 
     if(aimId.length != 0){
 
-        console.log(aimUser)
+        console.log(aimJob)
 
-        // aimUser = aimUser[0]
+        let modeJob = aimJob.mode
+
+        let in_person = ""
+        let virtual = ""
+        let hybrid = ""
+
+        if(modeJob == "in-person"){
+            in_person = "selected"
+        } else if (modeJob == "virtual"){
+            virtual = "selected"
+        } else if (modeJob == "hybrid"){
+            hybrid = "selected"
+        }
+
+        // aimJob = aimJob[0]
 
         let appContainer = document.getElementById("dashboardField")
 
-        console.log(aimUser)
+        console.log(aimJob)
     
         appContainer.innerHTML = `<div class="col-md-4 offset-md-4 mt-5">
             <div class="card">
@@ -119,18 +143,18 @@ async function editJobDiv(aimId){
                 <div class="card-body">
                     <form action="" id="submitChangesForm">
                         <label for="title">Title</label>
-                        <input type="text" name="title" id="title" class="form-control" value="${aimUser.title}">
+                        <input type="text" name="title" id="title" class="form-control" value="${aimJob.title}" required>
                         <label for="description">Description</label>
-                        <textarea name="description" id="description" class="form-control">${aimUser.description}</textarea>
+                        <textarea name="description" id="description" class="form-control" required>${aimJob.description}</textarea>
                         <label for="requirements">Requirements</label>
-                        <textarea name="requirements" id="requirements" class="form-control">${aimUser.requirements}</textarea>
+                        <textarea name="requirements" id="requirements" class="form-control" required>${aimJob.requirements}</textarea>
                         <label for="salary">Salary</label>
-                        <input type="number" name="salary" id="salary" class="form-control" value="${aimUser.salary}">
+                        <input type="number" name="salary" id="salary" class="form-control" value="${aimJob.salary}" required>
                         <label for="modality">Modality</label>
-                        <select name="modality" id="modality" class="form-control">
-                            <option value="in-person">in-person</option>
-                            <option value="virtual">virtual</option>
-                            <option value="hybrid">hybrid</option>
+                        <select name="modality" id="modality" class="form-control" required>
+                            <option value="in-person" ${in_person}>in-person</option>
+                            <option value="virtual" ${virtual}>virtual</option>
+                            <option value="hybrid" ${hybrid}>hybrid</option>
                         </select>
                         <button type="submit" class="btn btn-primary w-100 mt-4">Submit changes</button>
                     </form>
@@ -138,7 +162,6 @@ async function editJobDiv(aimId){
             </div>
         </div>`
 
-        document.getElementById('modality').value = `${aimUser.mode}`;
 
         const submitChangesForm = document.getElementById("submitChangesForm")
         submitChangesForm.addEventListener("submit",async(e)=>{
@@ -148,7 +171,9 @@ async function editJobDiv(aimId){
             const descriptionJob = document.getElementById("description")
             const requirementsJob = document.getElementById("requirements")
             const salaryJob = document.getElementById("salary")
-            const modeJob = document.getAnimations("modality")
+            const modeJob = document.getElementById("modality")
+
+            console.log(modeJob)
 
             const titleValue = titleJob.value
             const descriptionValue = descriptionJob.value
@@ -175,4 +200,79 @@ async function editJobDiv(aimId){
 
     
 
+}
+
+
+async function addJobDiv() {
+    let appContainer = document.getElementById("dashboardField")
+    const companyId = window.sessionStorage.getItem("companyId")
+
+
+    appContainer.innerHTML=`<div class="col-md-4 offset-md-4 mt-5">
+            <div class="card">
+                <h1 class="card-title text-center border-bottom p-2">Add job</h1>
+                <div class="card-body">
+                    <form action="" id="addJobForm">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" class="form-control" required>
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" class="form-control" required></textarea>
+                        <label for="requirements">Requirements</label>
+                        <textarea name="requirements" id="requirements" class="form-control" required></textarea>
+                        <label for="salary">Salary</label>
+                        <input type="number" name="salary" id="salary" class="form-control" required>
+                        <label for="modality">Modality</label>
+                        <select name="modality" id="modality" class="form-control" required>
+                            <option value="in-person">in-person</option>
+                            <option value="virtual">virtual</option>
+                            <option value="hybrid">hybrid</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary w-100 mt-4">Post job</button>
+                    </form>
+                </div>
+            </div>
+        </div>`
+
+    const addJobForm = document.getElementById("addJobForm")
+    addJobForm.addEventListener("submit",async(e)=>{
+        e.preventDefault()
+        const titleJob = document.getElementById("title")
+        const descriptionJob = document.getElementById("description")
+        const requirementsJob = document.getElementById("requirements")
+        const salaryJob = document.getElementById("salary")
+        const modeJob = document.getElementById("modality")
+
+        console.log(modeJob)
+
+        const titleValue = titleJob.value
+        const descriptionValue = descriptionJob.value
+        const requirementsValue = requirementsJob.value
+        const salaryValue = salaryJob.value
+        const modeValue = modeJob.value
+
+
+        if(checkSalary(salaryValue)){
+
+            let res = await postJob(titleValue,descriptionValue,salaryValue, requirementsValue,modeValue,companyId)
+            window.location.hash = "#/dashboard"
+            setTimeout(()=>{
+                window.location.hash = "#/dashboard/jobs"
+            },200)
+
+        } else {
+            alert("The salary is not positive")
+        }
+    })
+
+    
+    
+}
+
+
+function checkSalary(salary){
+    if(salary>= 0){
+        return true
+    } else {
+        return false
+    }
 }

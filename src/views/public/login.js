@@ -68,7 +68,7 @@ function verifyLogin(){
 
         } else {
 
-            let companyChosen = await getCompaniesQuerry(`?email=${emailValue}`)
+            let companyChosen = await getCompaniesQuerry(`email=${emailValue}`)
 
             if(companyChosen.length != 0){
 
@@ -82,6 +82,8 @@ function verifyLogin(){
 
                     window.sessionStorage.setItem("auth","true")
                     window.sessionStorage.setItem("role","company")
+                    window.sessionStorage.setItem("companyName",`${companyChosen.name}`)
+                    window.sessionStorage.setItem("companyId",companyChosen.id)
                     window.location.hash = "#/dashboard"
 
                 }else {

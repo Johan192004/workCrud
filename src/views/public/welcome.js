@@ -10,7 +10,7 @@ export function viewWelcome(){
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
                     <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3" id="login">Log in</button>
                     <button type="button" class="btn btn-outline-secondary btn-lg px-4" id="registerU">Register user</button>
-                    <button type="button" class="btn btn-outline-secondary btn-lg px-4" >Register company</button>
+                    <button type="button" class="btn btn-outline-secondary btn-lg px-4" id="registerC">Register company</button>
                 </div>
             </div>
         </div>`
@@ -20,6 +20,16 @@ export function viewWelcome(){
     loginButton.addEventListener("click",(e)=>{
         // history.pushState({},"",history.pushState({},"",window.location.hash))
         window.location.hash = "#/login"
+    })
+
+    const registerUserButton = document.getElementById("registerU")
+    registerUserButton.addEventListener("click",()=>{
+        window.location.hash = "#/registerUser"
+    })
+
+    const registerCompanyButton = document.getElementById("registerC")
+    registerCompanyButton.addEventListener("click",()=>{
+        window.location.hash = "#/registerCompany"
     })
     
 }

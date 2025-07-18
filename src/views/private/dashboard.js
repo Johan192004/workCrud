@@ -5,14 +5,18 @@ export function viewDashboard(){
     if(auth()){
         const appContainer = document.getElementById("app")
 
+       
+
         if(window.sessionStorage.getItem("role") == "company"){
+             const companyName = window.sessionStorage.getItem("companyName")
+
             appContainer.innerHTML = `<div class="row">
                     <aside class="col-md-3 vh-100 d-flex align-items-center justify-content-between flex-column sticky-top">
                         <div class="d-flex justify-content-start flex-column text-center flex-grow-1">
                             <div class="dropdown">
                                 <img src="https://static.vecteezy.com/system/resources/previews/046/593/914/non_2x/creative-logo-design-for-real-estate-company-vector.jpg" alt="Imagen de la empresa" class="img-fluid" id="companyImage">
                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                   Dropdown link
+                                   ${companyName}
                                 </a>
                             
                                 <ul class="dropdown-menu">
@@ -65,10 +69,14 @@ async function scriptDashboardCompany(){
         let lastHashSlash = currentHash.split("/")
         lastHashSlash = lastHashSlash[lastHashSlash.length - 1]
         console.log(lastHashSlash)
-        if(lastHashSlash != "jobs"){
-            path = currentHash + path
-            window.location.hash = path
-        }
+        window.location.hash = "#/dashboard"
+        setTimeout(() => {
+            window.location.hash = "#/dashboard/jobs"
+        }, 100);
+        // if(lastHashSlash != "jobs"){
+        //     path = currentHash + path
+        //     window.location.hash = path
+        // }
     })
 
 

@@ -117,8 +117,16 @@ export async function getJobs(){
     return resJson
 }
 
+
+
 export async function getJobId(id){
     let res = await fetch(URL_DB + "/jobs" + `/${id}`)
+    let resJson = await res.json()
+    return resJson
+}
+
+export async function getJobsQuerry(querry){
+    let res = await fetch(URL_DB + "/jobs" + `/?${querry}`)
     let resJson = await res.json()
     return resJson
 }
@@ -167,6 +175,7 @@ export function deleteJob(id){
 }
 
 export async function patchJob(idP,titleP,descriptionP,salaryP,requirementsP,modeP){
+    console.log(idP,titleP,descriptionP,salaryP,requirementsP,modeP)
 
     let res = await fetch(URL_DB + "/jobs/" + `${idP}`,{
         "method":"PATCH",
@@ -182,5 +191,26 @@ export async function patchJob(idP,titleP,descriptionP,salaryP,requirementsP,mod
         })
 
     })
+
+}
+
+export async function postJob(titleP,descriptionP,salaryP,requirementsP,modeP,companyIdP){
+
+    let res = await fetch(URL_DB + "/jobs",{
+        "method":"POST",
+        "headers":{
+            "Content-Type":"application/json"
+        },
+        "body":JSON.stringify({
+            title:titleP,
+            description:descriptionP,
+            salary:salaryP,
+            requirements:requirementsP,
+            mode:modeP,
+            companyId:companyIdP
+        })
+
+    })
+    return res
 
 }
